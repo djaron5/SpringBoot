@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>Our clients</h1>
+
+<form method="post" action="filter">
+    <label>Найти по id </label>
+    <input type="text" name="byId">
+    <button type="submit">Найти</button>
+</form>
+
+<table>
+    <tr>
+        <th width="80">ID</th>
+        <th width="120">RiskProfile</th>
+    </tr>
+    {{#clients}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{riskProfile}}</td>
+        </tr>
+    {{/clients}}
+</table>
+
+<form method="post" action="/">
+
+    <label>Добавить клиента с риском </label>
+    <label>
+        <select name="riskProfile">
+            {{#riskProfiles}}
+                <option value="{{.}}">{{.}}</option>
+            {{/riskProfiles}}
+        </select>
+    </label>
+    <button type="submit">Добавить</button>
+</form>
+
+<form method="post" action="/update">
+    <label>Изменить уровень риска клиенту с id </label>
+    <input type="text" name="id">
+    <label> на </label>
+    <label>
+        <select name="riskProfile">
+            {{#riskProfiles}}
+                <option value="{{.}}">{{.}}</option>
+            {{/riskProfiles}}
+        </select>
+    </label>
+    <button type="submit">Добавить</button>
+</form>
+
+<form method="post" action="/delete">
+    <label>Удалить клиента с id </label>
+    <input type="text" name="id">
+    <button type="submit">Удалить</button>
+</form>
+
+<form method="post" action="/merge">
+    <label>Объеденить клиентов с id </label>
+    <input type="text" name="id1">
+    <input type="text" name="id2">
+    <button type="submit">Объеденить</button>
+</form>
+</body>
+
+</html>
